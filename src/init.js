@@ -22,12 +22,26 @@ $(document).ready(function() {
 
     // make a dancer with a random position
 
-    var dancer = dancerMakerFunction(
+    var dancer = new dancerMakerFunction(
       $("body").height() * Math.random(),
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
     $('body').append(dancer.$node);
+
+    // Push new dancer to the windows.dancers array
+    window.dancers.push(dancer.$node);
   });
+
+  $('.addLine-upButton').on('click', function(event) {
+    var lineUpDancerFunctionName = $(this).data('data-lineup-dancers-function-name')
+    var lineUpDancerFunc = window[lineUpDancerFunctionName];
+      // window['makeWillDancer'].prototype.lineUp
+
+    console.log(lineUpDancerFunctionName);
+    console.log(lineUpDancerFunc);
+  })
+
+
 });
 
